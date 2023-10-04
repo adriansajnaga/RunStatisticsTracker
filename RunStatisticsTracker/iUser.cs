@@ -7,11 +7,12 @@ namespace RunStatisticsTracker
 {
     public interface iUser
     {
-        string Name { get; set; }
-        string Surname { get; set; }
+        string Name { get; }
+        string Surname { get; }
 
         Statistics GetStatistics();
-        public void SaveNewRecord(int dist);
-        public int ReadDistance(string km, string m);
+        public void SaveNewRecord(double distance);
+        public void ReadDistance(string distance);
+        public bool StatExists();
     }
 }
