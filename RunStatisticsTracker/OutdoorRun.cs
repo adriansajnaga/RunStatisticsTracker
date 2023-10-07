@@ -7,6 +7,10 @@ namespace RunStatisticsTracker
 {
     public class OutdoorRun : UserBase
     {
+        public delegate void DistanceSavedDelegate(object sender, EventArgs args);
+
+        public event DistanceSavedDelegate DistanceSaved;
+
         private string fileName;
 
         public OutdoorRun(string name, string surname)
@@ -20,6 +24,11 @@ namespace RunStatisticsTracker
             using (var writer = File.AppendText(fileName))
             {
                 writer.WriteLine(distance);
+            }
+
+            if (DistanceSaved != null)
+            {
+                DistanceSaved(this, new EventArgs());
             }
         }
 

@@ -10,16 +10,16 @@ string distance;
 bool isQuit = false;
 
 
-while (!isQuit)
-{
-    DisplayText("");
-    name = GetData("\u001b[33mWprowadź imię:\u001b[0m");
-    surname = GetData("\u001b[33mWprowadź Nazwisko:\u001b[0m");
+DisplayText("");
+name = GetData("\u001b[33mWprowadź imię:\u001b[0m");
+surname = GetData("\u001b[33mWprowadź Nazwisko:\u001b[0m");
+var outdoorRunner = new OutdoorRun(name, surname);
+var treadmillRunner = new TreadmillRun(name, surname);
+treadmillRunner.DistanceSaved += DistanceSavedInfo;
+outdoorRunner.DistanceSaved += DistanceSavedInfo;
 
     while (!isQuit)
     {
-        var outdoorRunner = new OutdoorRun(name, surname);
-        var treadmillRunner = new TreadmillRun(name, surname);
         DisplayMenu1(info, name);
         userChoice = GetData("");
 
@@ -59,7 +59,7 @@ while (!isQuit)
                     Console.WriteLine($"\u001b[31mBRAK STATYSTYK BIEGÓW NA ZEWNĄTRZ\n\u001b[0m");
                 }
 
-                GetData("\u001b[33mWciśnij jakiś przycisk aby wrócić do menu.\u001b[0m");
+                GetData("\u001b[33mAby wrócić do menu naciśnij dowolny przycisk.\u001b[0m");
                 break;
 
             case "4":
@@ -73,6 +73,13 @@ while (!isQuit)
                 continue;
         }
     }
+
+void DistanceSavedInfo(object sender, EventArgs args)
+{
+    Console.WriteLine();
+    Console.WriteLine($"\u001b[31mTwój bieg został zapisany!\u001b[0m");
+    Console.WriteLine("\u001b[33mAby kontynuować naciśnij dowolny przycisk.\n \u001b[0m");
+    Console.ReadLine();
 }
 
 void WelcomeDisplay()
@@ -98,8 +105,6 @@ void DisplayMenu1(string info, string name)
     Console.WriteLine("3. Odczytaj statystyki");
     Console.WriteLine("4. Zakończ program");
     Console.WriteLine($"\u001b[31m{info}\u001b[0m");
-
-
 }
 void DisplayText(string text)
 {
@@ -109,11 +114,10 @@ void DisplayText(string text)
 }
 void DisplayStatistics(int count, double distSum, double longestDist, double shortestDist, double avgDist, string text)
 {
-    Console.WriteLine();
     Console.WriteLine("\u001b[32m╔══════════════════════════════════════════════════════════╗\u001b[0m");
     Console.WriteLine($"               Statystyki biegów na {text}:               ");
     Console.WriteLine("\u001b[32m╚══════════════════════════════════════════════════════════╝\u001b[0m");
-    Console.WriteLine($"            Ilość biegów              \u001b[32m│\u001b[0m        {count}    ");
+    Console.WriteLine($"            Ilość biegów              \u001b[32m│\u001b[0m      {count}    ");
     Console.WriteLine($"         Najdłuższy bieg [km]         \u001b[32m│\u001b[0m      {Math.Round(longestDist, 3)}");
     Console.WriteLine($"         Najkrótszy bieg [km]         \u001b[32m│\u001b[0m      {Math.Round(shortestDist, 3)}");
     Console.WriteLine($"       Suma przebiegniętych [km]      \u001b[32m│\u001b[0m      {Math.Round(distSum, 3)}");

@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace RunStatisticsTracker
+﻿namespace RunStatisticsTracker
 {
     public class TreadmillRun : UserBase
     {
+        public delegate void DistanceSavedDelegate(object sender, EventArgs args);
+
+        public event DistanceSavedDelegate DistanceSaved;
+
         private string fileName;
 
-        public TreadmillRun(string name, string surname) 
+        public TreadmillRun(string name, string surname)
             : base(name, surname)
         {
             fileName = $"{name}_{surname}_treademilRuns.txt";
@@ -21,22 +20,28 @@ namespace RunStatisticsTracker
             {
                 writer.WriteLine(distance);
             }
+
+            if (DistanceSaved != null)
+            {
+                DistanceSaved(this, new EventArgs());
+            }
+
         }
 
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
 
-                using (var reader = File.OpenText($"{fileName}"))
-                {
-                    string line;
+            using (var reader = File.OpenText($"{fileName}"))
+            {
+                string line;
 
-                    while ((line = reader.ReadLine()) != null)
-                    { 
-                        var distance = double.Parse(line);
-                        statistics.AddRecords(distance);
-                    }
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var distance = double.Parse(line);
+                    statistics.AddRecords(distance);
                 }
+            }
 
             return statistics;
         }

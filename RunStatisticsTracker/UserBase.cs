@@ -7,6 +7,7 @@ using System.Xml.Linq;
 namespace RunStatisticsTracker
 {
     public abstract class UserBase     : iUser
+
     {
         public UserBase(string name, string surname)
         {
@@ -28,21 +29,21 @@ namespace RunStatisticsTracker
 
                 if (distanceDouble > 319.614) 
                 {
-                    Console.WriteLine($"Rekord");
+                    Console.WriteLine($"\u001b[32mBravo! Pobiłeś rekord świata!\u001b[32m");
+                    Console.WriteLine("\u001b[33mAby kontynuować naciśnij dowolny przycisk.\n \u001b[0m");
                     Console.ReadLine();
-                    // event jestes rekordzistą świata
                 } 
                 else if (distanceDouble == 42.195)
                 {
-                    Console.WriteLine($"Cały");
+                    Console.WriteLine($"\u001b[32mBravo! Przebiegłeś maraton!\u001b[32m");
+                    Console.WriteLine("\u001b[33mAby kontynuować naciśnij dowolny przycisk.\n \u001b[0m");
                     Console.ReadLine();
-                    // event bravo przebiegłeś maraton
                 }
                 else if (distanceDouble == 21.0975)
                 {
-                    Console.WriteLine($"Pół");
+                    Console.WriteLine($"\u001b[32mBravo! Przebiegłeś półmaraton\u001b[32m");
+                    Console.WriteLine("\u001b[33mAby kontynuować naciśnij dowolny przycisk.\n \u001b[0m");
                     Console.ReadLine();
-                    // event bravo przebiegłeś półmaraton
                 }
 
             }
@@ -50,8 +51,6 @@ namespace RunStatisticsTracker
             {
                 Console.WriteLine($"Nieprawidłowa liczba");
                 Console.ReadLine();
-                //throw new System.NotImplementedException();
-                // event nieprawidłowy dystans
 
             }
         }
