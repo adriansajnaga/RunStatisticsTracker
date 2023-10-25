@@ -5,26 +5,23 @@ using System.Text;
 
 namespace RunStatisticsTracker
 {
-    public class OutdoorRun : UserBase
+    public class RunnerInMemory : UserBase
     {
         public delegate void DistanceSavedDelegate(object sender, EventArgs args);
 
         public event DistanceSavedDelegate DistanceSaved;
 
-        private string fileName;
+        private List<double> listOfRecords = new List<double>();
 
-        public OutdoorRun(string name, string surname)
+        public RunnerInMemory(string name, string surname)
             : base(name, surname)
         {
-            fileName = $"{name}_{surname}_outdoorRuns.txt";
+
         }
 
         public override void SaveNewRecord(double distance)
         {
-            using (var writer = File.AppendText(fileName))
-            {
-                writer.WriteLine(distance);
-            }
+            this.listOfRecords.Add(distance);
 
             if (DistanceSaved != null)
             {
@@ -36,24 +33,17 @@ namespace RunStatisticsTracker
         {
             var statistics = new Statistics();
 
- 
-                using (var reader = File.OpenText($"{fileName}"))
-                {
-                    string line;
-
-                    while ((line = reader.ReadLine()) != null)
+                    foreach (var record in this.listOfRecords)
                     {
-                        var distance = double.Parse(line);
-                        statistics.AddRecords(distance);
-                    }
-                }
+                        statistics.AddRecords(record);
+                    }  
 
             return statistics;
         }
 
         public override bool StatExists()
         {
-            if (File.Exists($"{fileName}"))
+            if (listOfRecords.Any())
             {
                 return true;
             }

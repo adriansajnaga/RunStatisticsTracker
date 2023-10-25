@@ -1,6 +1,11 @@
-﻿namespace RunStatisticsTracker
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace RunStatisticsTracker
 {
-    public class TreadmillRun : UserBase
+    public class RunnerInFile : UserBase
     {
         public delegate void DistanceSavedDelegate(object sender, EventArgs args);
 
@@ -8,10 +13,10 @@
 
         private string fileName;
 
-        public TreadmillRun(string name, string surname)
+        public RunnerInFile(string name, string surname)
             : base(name, surname)
         {
-            fileName = $"{name}_{surname}_treademilRuns.txt";
+            fileName = $"{name}_{surname}_runs.txt";
         }
 
         public override void SaveNewRecord(double distance)
@@ -25,26 +30,27 @@
             {
                 DistanceSaved(this, new EventArgs());
             }
-
         }
 
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
 
-            using (var reader = File.OpenText($"{fileName}"))
-            {
-                string line;
-
-                while ((line = reader.ReadLine()) != null)
+ 
+                using (var reader = File.OpenText($"{fileName}"))
                 {
-                    var distance = double.Parse(line);
-                    statistics.AddRecords(distance);
+                    string line;
+
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        var distance = double.Parse(line);
+                        statistics.AddRecords(distance);
+                    }
                 }
-            }
 
             return statistics;
         }
+
         public override bool StatExists()
         {
             if (File.Exists($"{fileName}"))

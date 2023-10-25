@@ -3,7 +3,7 @@
   <Class Name="RunStatisticsTracker.UserBase">
     <Position X="3.75" Y="0.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAIAQAAAAAAAAIAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAEAAQgAAAAAAAIAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UserBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -11,28 +11,42 @@
   <Class Name="RunStatisticsTracker.Statistics">
     <Position X="7" Y="0.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAAABAFAAAEAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAQgAAABQEAAAAAA=</HashCode>
       <FileName>Statistics.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RunStatisticsTracker.TreadmillRun">
-    <Position X="1" Y="4.25" Width="3.25" />
+  <Class Name="RunStatisticsTracker.RunnerInFile">
+    <Position X="6.25" Y="5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="RunStatisticsTracker.RunnerInFile.DistanceSavedDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RunnerInFile.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
-      <FileName>TreadmillRun.cs</FileName>
+      <HashCode>AAAAAAAEAAQgAAAAAAAAAAAAAAAAAAAAAEAAAAACAAA=</HashCode>
+      <FileName>RunnerInFile.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RunStatisticsTracker.OutdoorRun">
-    <Position X="6.5" Y="4.25" Width="3.25" />
+  <Class Name="RunStatisticsTracker.RunnerInMemory">
+    <Position X="2.5" Y="5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="RunStatisticsTracker.RunnerInMemory.DistanceSavedDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RunnerInMemory.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
-      <FileName>OutdoorRun.cs</FileName>
+      <HashCode>AAAAAAAEAAQgAIAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>RunnerInMemory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="RunStatisticsTracker.iUser">
     <Position X="1" Y="0.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAEIAQAAAAAAAAIAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAEAAQgAAAAAAAIAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>iUser.cs</FileName>
     </TypeIdentifier>
   </Interface>
