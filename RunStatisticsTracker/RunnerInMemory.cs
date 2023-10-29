@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace RunStatisticsTracker
+﻿namespace RunStatisticsTracker
 {
     public class RunnerInMemory : UserBase
     {
@@ -33,10 +28,10 @@ namespace RunStatisticsTracker
         {
             var statistics = new Statistics();
 
-                    foreach (var record in this.listOfRecords)
-                    {
-                        statistics.AddRecords(record);
-                    }  
+            foreach (var record in this.listOfRecords)
+            {
+                statistics.AddRecords(record);
+            }
 
             return statistics;
         }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
-
-namespace RunStatisticsTracker
+﻿namespace RunStatisticsTracker
 {
-    public abstract class UserBase     : iUser
+    public abstract class UserBase : IUser
 
     {
         public UserBase(string name, string surname)
@@ -27,12 +21,12 @@ namespace RunStatisticsTracker
             {
                 SaveNewRecord(distanceDouble);
 
-                if (distanceDouble > 319.614) 
+                if (distanceDouble > 319.614)
                 {
                     Console.WriteLine($"\u001b[32mBravo! Pobiłeś rekord świata!\u001b[32m");
                     Console.WriteLine("\u001b[33mAby kontynuować naciśnij dowolny przycisk.\n \u001b[0m");
                     Console.ReadLine();
-                } 
+                }
                 else if (distanceDouble == 42.195)
                 {
                     Console.WriteLine($"\u001b[32mBravo! Przebiegłeś maraton!\u001b[32m");

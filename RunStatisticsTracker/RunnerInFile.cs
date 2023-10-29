@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace RunStatisticsTracker
+﻿namespace RunStatisticsTracker
 {
     public class RunnerInFile : UserBase
     {
@@ -36,17 +31,17 @@ namespace RunStatisticsTracker
         {
             var statistics = new Statistics();
 
- 
-                using (var reader = File.OpenText($"{fileName}"))
-                {
-                    string line;
 
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        var distance = double.Parse(line);
-                        statistics.AddRecords(distance);
-                    }
+            using (var reader = File.OpenText($"{fileName}"))
+            {
+                string line;
+
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var distance = double.Parse(line);
+                    statistics.AddRecords(distance);
                 }
+            }
 
             return statistics;
         }

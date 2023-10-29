@@ -1,4 +1,3 @@
-using RunStatisticsTracker;
 namespace RunStatisticsTracker.Tests
 
 

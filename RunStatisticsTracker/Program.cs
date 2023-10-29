@@ -1,6 +1,4 @@
 ﻿using RunStatisticsTracker;
-using System.Diagnostics.Tracing;
-using System.Security.Cryptography.X509Certificates;
 
 string name;
 string surname;
@@ -19,25 +17,25 @@ runnerInMemory.DistanceSaved += DistanceSavedInfo;
 runnerInFile.DistanceSaved += DistanceSavedInfo;
 
 while (!isQuit)
+{
+    DisplayMenu1(info, name);
+    userChoice = GetData("");
+
+    switch (userChoice)
     {
-        DisplayMenu1(info, name);
-        userChoice = GetData("");
+        case "1":
 
-        switch (userChoice)
-        {
-            case "1":
+            DisplayText("ZAPISYWANIE BIEGÓW DO PAMIĘCI\n");
+            runnerInMemory.ReadDistance(GetData("\u001b[33mWprowadź ilość przebiegniętych kilometrów (np. 21,0975) a następnie naciśnij enter:\u001b[0m"));
+            break;
 
-                DisplayText("ZAPISYWANIE BIEGÓW DO PAMIĘCI\n");
-                runnerInMemory.ReadDistance(GetData("\u001b[33mWprowadź ilość przebiegniętych kilometrów (np. 21,0975) a następnie naciśnij enter:\u001b[0m"));
-                break;
-
-            case "2":
+        case "2":
             DisplayText("ZPIESYWANIE BIEGÓW DO PLIKU\n");
             runnerInFile.ReadDistance(GetData("\u001b[33mWprowadź ilość przebiegniętych kilometrów (np. 21,0975) a następnie naciśnij enter:\u001b[0m"));
 
             break;
 
-            case "3":
+        case "3":
             DisplayText("");
             if (runnerInFile.StatExists())
             {
@@ -60,19 +58,19 @@ while (!isQuit)
             }
 
             GetData("\u001b[33mAby wrócić do menu naciśnij dowolny przycisk.\u001b[0m");
-                break;
+            break;
 
-            case "4":
-                isQuit = true;
-                DisplayText("\u001b[33mDZIĘKUJĘ ZA SKORZYSTANIE Z TEGO PROGRAMU!\u001b[0m");
-                Console.WriteLine("");
-                break;
+        case "4":
+            isQuit = true;
+            DisplayText("\u001b[33mDZIĘKUJĘ ZA SKORZYSTANIE Z TEGO PROGRAMU!\u001b[0m");
+            Console.WriteLine("");
+            break;
 
-            default:
-                info = $"Nieprawidłowy wybór - {userChoice}";
-                continue;
-        }
+        default:
+            info = $"Nieprawidłowy wybór - {userChoice}";
+            continue;
     }
+}
 
 void DistanceSavedInfo(object sender, EventArgs args)
 {
