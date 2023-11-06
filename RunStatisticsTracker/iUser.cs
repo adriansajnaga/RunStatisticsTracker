@@ -7,7 +7,7 @@
 
         Statistics GetStatistics();
         public void SaveNewRecord(double distance);
-        public void ReadDistance(string distance);
+        public void SaveNewRecord(string distance);
         public bool StatExists();
     }
 }

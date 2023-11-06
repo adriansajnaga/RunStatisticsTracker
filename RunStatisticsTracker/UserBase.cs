@@ -14,7 +14,7 @@
 
         public abstract Statistics GetStatistics();
 
-        public void ReadDistance(string distance)
+        public void SaveNewRecord(string distance)
         {
 
             if (double.TryParse(distance, out double distanceDouble) && distanceDouble > 0)
@@ -43,9 +43,7 @@
             }
             else
             {
-                Console.WriteLine($"Nieprawidłowa liczba");
-                Console.ReadLine();
-
+                throw new Exception($"Nieprawidłowa liczba");
             }
         }
 

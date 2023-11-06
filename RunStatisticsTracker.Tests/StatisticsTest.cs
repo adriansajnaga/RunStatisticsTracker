@@ -10,9 +10,9 @@ namespace RunStatisticsTracker.Tests
         {
             var runner = new RunnerInMemory("Adrian", "Sajnaga");
             runner.SaveNewRecord(55);
-            runner.ReadDistance("3");
+            runner.SaveNewRecord("3");
             runner.SaveNewRecord(22);
-            runner.ReadDistance("20");
+            runner.SaveNewRecord("20");
             var statistics = runner.GetStatistics();
             Assert.AreEqual(3, statistics.ShortestDist);
         }
@@ -22,9 +22,9 @@ namespace RunStatisticsTracker.Tests
         {
             var runner = new RunnerInMemory("Adrian", "Sajnaga");
             runner.SaveNewRecord(55);
-            runner.ReadDistance("3");
+            runner.SaveNewRecord("3");
             runner.SaveNewRecord(22);
-            runner.ReadDistance("20");
+            runner.SaveNewRecord("20");
             var statistics = runner.GetStatistics();
             Assert.AreEqual(55, statistics.LongestDist);
         }
@@ -34,9 +34,9 @@ namespace RunStatisticsTracker.Tests
         {
             var runner = new RunnerInMemory("Adrian", "Sajnaga");
             runner.SaveNewRecord(55);
-            runner.ReadDistance("3");
+            runner.SaveNewRecord("3");
             runner.SaveNewRecord(22);
-            runner.ReadDistance("20");
+            runner.SaveNewRecord("20");
             var statistics = runner.GetStatistics();
             Assert.AreEqual(25, statistics.AvgDist);
         }
@@ -46,9 +46,9 @@ namespace RunStatisticsTracker.Tests
         {
             var runner = new RunnerInMemory("Adrian", "Sajnaga");
             runner.SaveNewRecord(55);
-            runner.ReadDistance("3");
+            runner.SaveNewRecord("3");
             runner.SaveNewRecord(22);
-            runner.ReadDistance("20");
+            runner.SaveNewRecord("20");
             var statistics = runner.GetStatistics();
             Assert.AreEqual(4, statistics.Count);
         }

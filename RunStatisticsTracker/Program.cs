@@ -26,13 +26,28 @@ while (!isQuit)
         case "1":
 
             DisplayText("ZAPISYWANIE BIEGÓW DO PAMIĘCI\n");
-            runnerInMemory.ReadDistance(GetData("\u001b[33mWprowadź ilość przebiegniętych kilometrów (np. 21,0975) a następnie naciśnij enter:\u001b[0m"));
+            try
+            {
+                runnerInMemory.SaveNewRecord(GetData("\u001b[33mWprowadź ilość przebiegniętych kilometrów (np. 21,0975) a następnie naciśnij enter:\u001b[0m"));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadLine();
+            }
             break;
 
         case "2":
             DisplayText("ZPIESYWANIE BIEGÓW DO PLIKU\n");
-            runnerInFile.ReadDistance(GetData("\u001b[33mWprowadź ilość przebiegniętych kilometrów (np. 21,0975) a następnie naciśnij enter:\u001b[0m"));
-
+            try
+            {
+                runnerInFile.SaveNewRecord(GetData("\u001b[33mWprowadź ilość przebiegniętych kilometrów (np. 21,0975) a następnie naciśnij enter:\u001b[0m"));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadLine();
+            }
             break;
 
         case "3":
